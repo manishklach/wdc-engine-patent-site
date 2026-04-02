@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://manishklach.github.io/wdc-engine-patent-site/sitemap.xml

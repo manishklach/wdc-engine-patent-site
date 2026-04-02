@@ -36,23 +36,29 @@ Opening `index.html` directly also works for a quick review, but a local server 
 
 ## GitHub Pages deployment
 
-### Dedicated repository
+This repository includes a GitHub Actions workflow at `.github/workflows/deploy-pages.yml`.
 
-1. Push the contents of this folder as the repository root.
-2. In GitHub, open `Settings -> Pages`.
-3. Choose `Deploy from a branch`.
-4. Select the default branch and `/ (root)`.
-5. Save.
+Recommended setup:
 
-### Subfolder inside another repository
+1. Keep the site in the repository root.
+2. Keep `main` as the source branch for changes.
+3. In GitHub, open `Settings -> Pages`.
+4. Set the build and deployment source to `GitHub Actions`.
+5. Push to `main` to trigger a fresh Pages deployment.
 
-Use one of these approaches:
+The workflow uploads the repository root as the Pages artifact, so the project site deploys cleanly without moving files into `docs/`.
 
-1. Copy the site into the repo root for a Pages-only repository.
-2. Copy the site into `/docs` and publish Pages from that folder.
-3. Use a GitHub Actions Pages workflow that uploads this folder as the static artifact.
+### Project-site path behavior
 
-All paths in this site are relative, so it can be hosted from a GitHub Pages project subpath without rewriting asset URLs.
+This repository is intended to publish as a project site at:
+
+`https://manishklach.github.io/wdc-engine-patent-site/`
+
+Path assumptions:
+
+- Asset links, stylesheet links, script links, favicon links, and internal page links use relative URLs.
+- Canonical, Open Graph, Twitter, `robots.txt`, and `sitemap.xml` use the absolute project-site URL above.
+- The site therefore works correctly when served from the GitHub Pages repository subpath `/wdc-engine-patent-site/`.
 
 ## Updating content when the patent evolves
 

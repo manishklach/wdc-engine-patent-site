@@ -529,6 +529,36 @@ pre {
 .footer-note { margin-top: 0.35rem; }
 .footer-links { display: flex; gap: 1rem; color: var(--muted); }
 
+.not-found-shell {
+  min-height: 100vh;
+  display: grid;
+  align-items: center;
+}
+
+.not-found-card {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 2rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  text-align: center;
+}
+
+.not-found-card h1 {
+  margin-top: 1rem;
+}
+
+.not-found-card p:not(.eyebrow) {
+  margin-top: 1rem;
+  font-size: 1.02rem;
+}
+
+.not-found-card .cta-row {
+  justify-content: center;
+}
+
 .reveal {
   opacity: 0;
   transform: translateY(16px);
