@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WDC-Engine | Semantic Deduplication and Shared Execution</title>
+  <meta name="description" content="A public technical microsite for WDC-Engine, a middleware architecture for semantic deduplication and shared execution of agent-generated enterprise tasks.">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <meta name="theme-color" content="#f5f7fb">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="WDC-Engine | Semantic Deduplication and Shared Execution">
+  <meta property="og:description" content="Collapse semantically equivalent enterprise agent tasks before execution begins. Execute once. Fan out results to all subscribed agents.">
+  <meta property="og:image" content="./assets/og-card.svg">
+  <meta property="og:url" content="./">
+  <meta property="og:site_name" content="WDC-Engine">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="WDC-Engine | Semantic Deduplication and Shared Execution">
+  <meta name="twitter:description" content="A public technical overview of semantic deduplication, temporal admission, shared live execution, and result fan-out.">
+  <meta name="twitter:image" content="./assets/og-card.svg">
+  <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,500;9..144,600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body id="top">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="site-bg" aria-hidden="true">
+    <div class="aurora aurora-one"></div>
+    <div class="aurora aurora-two"></div>
+    <div class="grid-wash"></div>
+  </div>
+
+  <header class="site-header" data-header>
+    <div class="container header-inner">
+      <a class="brand" href="#top" aria-label="WDC-Engine home">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 64 64" role="presentation">
+            <defs>
+              <linearGradient id="brandGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#57a5ff"></stop>
+                <stop offset="100%" stop-color="#0f6cda"></stop>
+              </linearGradient>
+            </defs>
+            <rect x="8" y="8" width="48" height="48" rx="16" fill="url(#brandGradient)"></rect>
+            <circle cx="22" cy="22" r="4" fill="#ffffff"></circle>
+            <circle cx="42" cy="22" r="4" fill="#ffffff"></circle>
+            <circle cx="32" cy="42" r="4" fill="#ffffff"></circle>
+            <path d="M22 22L42 22L32 42Z" fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+        </span>
+        <span class="brand-copy">
+          <strong>WDC-Engine</strong>
+          <span>Semantic Deduplication Microsite</span>
+        </span>
+      </a>
+
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-nav-toggle>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav class="site-nav" id="site-nav" aria-label="Primary">
+        <a href="#problem">Problem</a>
+        <a href="#core-idea">Core Idea</a>
+        <a href="#architecture">Architecture</a>
+        <a href="#matching">Matching</a>
+        <a href="#examples">Examples</a>
+        <a href="#differentiation">Differentiation</a>
+        <a href="#deployment">Deployment</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero section">
+      <div class="container hero-grid">
+        <div class="hero-copy reveal">
+          <p class="eyebrow">Public Technical Overview</p>
+          <h1>Collapse equivalent enterprise agent work before it reaches compute, databases, and APIs.</h1>
+          <p class="hero-subtitle">
+            <strong>WDC-Engine</strong> is a middleware and orchestration layer for <strong>semantic deduplication and shared execution</strong> of agent-generated enterprise tasks.
+          </p>
+          <p class="hero-summary">
+            Instead of letting multiple AI agents independently trigger the same or near-same backend task, WDC-Engine fingerprints intent, detects semantic equivalence, holds unique work in a bounded temporal admission window, collapses sister tasks into a shared execution unit, executes once, and fans the full result out to every subscribed agent.
+          </p>
+          <div class="cta-row">
+            <a class="button button-primary" href="#architecture">Explore Architecture</a>
+            <a class="button button-secondary" href="#technical-flow">View Patent Overview</a>
+          </div>
+          <div class="hero-metrics" aria-label="Key outcomes">
+            <article class="metric-pill">
+              <span class="metric-label">Middleware position</span>
+              <strong>Between agent layer and backend execution</strong>
+            </article>
+            <article class="metric-pill">
+              <span class="metric-label">Core novelty thread</span>
+              <strong>Semantic equivalence + temporal admission + shared live execution + fan-out</strong>
+            </article>
+            <article class="metric-pill">
+              <span class="metric-label">Deployment model</span>
+              <strong>Single node or distributed multi-node synchronization</strong>
+            </article>
+          </div>
+        </div>
+
+        <div class="hero-panel reveal">
+          <div class="hero-card">
+            <div class="panel-head">
+              <span class="eyebrow">Technical flow</span>
+              <p>One backend execution serving many agent requests.</p>
+            </div>
+            <svg class="hero-diagram" viewBox="0 0 760 640" role="img" aria-label="Flow diagram showing WDC-Engine collapsing equivalent agent tasks into a single backend execution">
+              <defs>
+                <linearGradient id="heroStroke" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#4ea1ff"></stop>
+                  <stop offset="100%" stop-color="#1349b5"></stop>
+                </linearGradient>
+              </defs>
+              <rect x="24" y="24" width="712" height="592" rx="36" class="diagram-frame"></rect>
+              <g class="diagram-node diagram-node-soft">
+                <rect x="68" y="72" width="188" height="118" rx="24"></rect>
+                <text x="94" y="116" class="diagram-kicker">Agent layer</text>
+                <text x="94" y="154" class="diagram-title">Agent A</text>
+                <text x="94" y="180" class="diagram-copy">SQL query task</text>
+              </g>
+              <g class="diagram-node diagram-node-soft">
+                <rect x="68" y="224" width="188" height="118" rx="24"></rect>
+                <text x="94" y="268" class="diagram-kicker">Agent layer</text>
+                <text x="94" y="306" class="diagram-title">Agent B</text>
+                <text x="94" y="332" class="diagram-copy">Near-equivalent task</text>
+              </g>
+              <g class="diagram-node diagram-node-soft">
+                <rect x="68" y="376" width="188" height="118" rx="24"></rect>
+                <text x="94" y="420" class="diagram-kicker">Agent layer</text>
+                <text x="94" y="458" class="diagram-title">Agent C</text>
+                <text x="94" y="484" class="diagram-copy">Sister task arrives</text>
+              </g>
+              <g class="diagram-node diagram-node-focus">
+                <rect x="310" y="138" width="180" height="290" rx="30"></rect>
+                <text x="340" y="186" class="diagram-kicker">WDC-Engine</text>
+                <text x="340" y="224" class="diagram-title">Semantic fingerprint</text>
+                <text x="340" y="252" class="diagram-copy">Hash + embedding</text>
+                <text x="340" y="310" class="diagram-title">Temporal admission</text>
+                <text x="340" y="338" class="diagram-copy">Bounded delay</text>
+                <text x="340" y="396" class="diagram-title">Shared execution unit</text>
+                <text x="340" y="424" class="diagram-copy">Collapse and subscribe</text>
+              </g>
+              <g class="diagram-node diagram-node-strong">
+                <rect x="546" y="220" width="138" height="128" rx="28"></rect>
+                <text x="574" y="268" class="diagram-kicker">Execution</text>
+                <text x="574" y="306" class="diagram-title">Run once</text>
+                <text x="574" y="334" class="diagram-copy">DB / API / compute</text>
+              </g>
+              <g class="diagram-node diagram-node-soft">
+                <rect x="300" y="490" width="402" height="86" rx="24"></rect>
+                <text x="330" y="528" class="diagram-kicker">Result fan-out module</text>
+                <text x="330" y="560" class="diagram-copy">Full result payload delivered to every subscribed agent</text>
+              </g>
+              <g class="diagram-links">
+                <path d="M256 131H310"></path>
+                <path d="M256 283H310"></path>
+                <path d="M256 435H310"></path>
+                <path d="M490 283H546"></path>
+                <path d="M614 348V402C614 424 598 442 576 442H430"></path>
+                <path d="M430 442V490"></path>
+              </g>
+              <g class="diagram-badges">
+                <rect x="110" y="536" width="144" height="34" rx="17"></rect>
+                <text x="128" y="558" class="diagram-badge-text">DEFERRED for duplicates</text>
+              </g>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="problem">
+      <div class="container">
+        <div class="section-heading reveal">
+          <p class="eyebrow">The Problem</p>
+          <h2>Enterprise agent fleets routinely generate overlapping work, but conventional infrastructure treats each request as brand-new.</h2>
+          <p>In multi-agent enterprise environments, concurrent agents often pursue related objectives over the same data and systems. Without middleware-level semantic deduplication, the same logical task can trigger repeated SQL execution, repeated API calls, repeated document parsing, and repeated report generation.</p>
+        </div>
+        <div class="problem-grid reveal">
+          <article class="info-card">
+            <span class="card-tag">Redundant compute</span>
+            <h3>Equivalent work burns CPU and I/O repeatedly</h3>
+            <p>Semantically identical or near-identical tasks are executed in full even when they would yield the same backend result.</p>
+          </article>
+          <article class="info-card">
+            <span class="card-tag">Database pressure</span>
+            <h3>Connection pools and warehouses absorb unnecessary load</h3>
+            <p>Repeated queries increase connection pressure, query contention, and shared resource latency.</p>
+          </article>
+          <article class="info-card">
+            <span class="card-tag">API quota waste</span>
+            <h3>External endpoints are hit multiple times for the same logical question</h3>
+            <p>Rate limits, enrichment costs, and upstream quota are consumed by overlapping requests.</p>
+          </article>
+          <article class="info-card">
+            <span class="card-tag">Agent fan-out timing</span>
+            <h3>Duplicate requests often cluster tightly after the same trigger event</h3>
+            <p>Scheduled jobs, new documents, and workflow events can cause multiple agents to emit equivalent tasks within milliseconds to seconds.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-tinted" id="core-idea">
+      <div class="container">
+        <div class="section-heading reveal">
+          <p class="eyebrow">The Core Idea</p>
+          <h2>Fingerprint the work, admit a short cluster window, collapse equivalents, execute once, fan out results.</h2>
+        </div>
+        <div class="idea-flow reveal" id="technical-flow">
+          <article class="flow-step">
+            <span class="step-number">01</span>
+            <h3>Ingress</h3>
+            <p>Tasks enter through the Task Ingress Registry with task identity, origin metadata, type classification, timestamp, and payload.</p>
+          </article>
+          <article class="flow-step">
+            <span class="step-number">02</span>
+            <h3>Semantic fingerprinting</h3>
+            <p>The Semantic Fingerprinting Module generates a canonical representation of logical intent, not just raw syntax.</p>
+          </article>
+          <article class="flow-step">
+            <span class="step-number">03</span>
+            <h3>Exact and near-match detection</h3>
+            <p>The Similarity Detection Engine checks exact structural hashes first, then embedding-based near-equivalence for semantically similar work.</p>
+          </article>
+          <article class="flow-step">
+            <span class="step-number">04</span>
+            <h3>Temporal admission</h3>
+            <p>Unique work is held briefly in a bounded temporal window so sister tasks can arrive before backend execution begins.</p>
+          </article>
+          <article class="flow-step">
+            <span class="step-number">05</span>
+            <h3>Shared execution unit</h3>
+            <p>Equivalent tasks are collapsed into a single SEU. Duplicate arrivals receive a DEFERRED response and subscribe to the live unit.</p>
+          </article>
+          <article class="flow-step">
+            <span class="step-number">06</span>
+            <h3>Fan-out</h3>
+            <p>One execution completes, the result is written once, and the full payload is fanned out to all subscribed agents.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="architecture">
+      <div class="container">
+        <div class="section-heading reveal">
+          <p class="eyebrow">Architecture</p>
+          <h2>Eight cooperating modules implement prospective semantic deduplication before backend work starts.</h2>
+        </div>
+
+        <figure class="figure-frame reveal">
+          <div class="figure-stage">
+            <svg class="architecture-diagram" viewBox="0 0 1280 760" role="img" aria-label="WDC-Engine architecture diagram showing agents, ingress, fingerprinting, matching, temporal admission, shared execution, backends, and result fan-out">
+              <rect x="26" y="26" width="1228" height="708" rx="34" class="arch-shell"></rect>
+              <g class="arch-lane">
+                <text x="72" y="86" class="arch-label">Agent Layer</text>
+                <rect x="72" y="114" width="194" height="74" rx="22" class="arch-node arch-node-light"></rect>
+                <text x="96" y="160" class="arch-title">Autonomous agents</text>
+                <text x="96" y="185" class="arch-copy">SQL, API, NL, docs, spreadsheets</text>
+              </g>
+              <g>
+                <rect x="364" y="92" width="178" height="86" rx="24" class="arch-node arch-node-core"></rect>
+                <text x="392" y="142" class="arch-title arch-title-invert">TIR</text>
+                <text x="392" y="168" class="arch-copy arch-copy-invert">Task Ingress Registry</text>
+              </g>
+              <g>
+                <rect x="596" y="92" width="202" height="86" rx="24" class="arch-node arch-node-core"></rect>
+                <text x="624" y="142" class="arch-title arch-title-invert">SFM</text>
+                <text x="624" y="168" class="arch-copy arch-copy-invert">Semantic Fingerprinting Module</text>
+              </g>
+              <g>
+                <rect x="862" y="92" width="212" height="86" rx="24" class="arch-node arch-node-core"></rect>
+                <text x="892" y="142" class="arch-title arch-title-invert">SDE</text>
+                <text x="892" y="168" class="arch-copy arch-copy-invert">Similarity Detection Engine</text>
+              </g>
+              <g>
+                <rect x="868" y="266" width="196" height="86" rx="24" class="arch-node arch-node-light"></rect>
+                <text x="896" y="316" class="arch-title">CM</text>
+                <text x="896" y="342" class="arch-copy">Collapse Manager</text>
+              </g>
+              <g>
+                <rect x="1090" y="266" width="122" height="86" rx="24" class="arch-node arch-node-light"></rect>
+                <text x="1118" y="316" class="arch-title">WIP</text>
+                <text x="1118" y="342" class="arch-copy">Cache</text>
+              </g>
+              <g>
+                <rect x="596" y="266" width="196" height="86" rx="24" class="arch-node arch-node-focus"></rect>
+                <text x="624" y="316" class="arch-title">TAC</text>
+                <text x="624" y="342" class="arch-copy">Temporal Admission Controller</text>
+              </g>
+              <g>
+                <rect x="596" y="444" width="220" height="92" rx="24" class="arch-node arch-node-focus"></rect>
+                <text x="626" y="496" class="arch-title">SEU-M</text>
+                <text x="626" y="522" class="arch-copy">Shared Execution Unit Manager</text>
+              </g>
+              <g>
+                <rect x="888" y="448" width="254" height="86" rx="24" class="arch-node arch-node-light"></rect>
+                <text x="916" y="498" class="arch-title">Backend resources</text>
+                <text x="916" y="524" class="arch-copy">Databases, APIs, document services</text>
+              </g>
+              <g>
+                <rect x="596" y="624" width="206" height="78" rx="24" class="arch-node arch-node-core"></rect>
+                <text x="626" y="670" class="arch-title arch-title-invert">RFM</text>
+                <text x="626" y="696" class="arch-copy arch-copy-invert">Result Fan-out Module</text>
+              </g>
+              <g>
+                <rect x="888" y="616" width="288" height="90" rx="26" class="arch-node arch-node-light"></rect>
+                <text x="918" y="660" class="arch-title">Subscribed agents</text>
+                <text x="918" y="686" class="arch-copy">All originating agents receive full result payload</text>
+              </g>
+              <g class="arch-connector">
+                <path d="M266 151H364"></path>
+                <path d="M542 135H596"></path>
+                <path d="M798 135H862"></path>
+                <path d="M968 178V230"></path>
+                <path d="M862 309H792"></path>
+                <path d="M694 352V444"></path>
+                <path d="M816 490H888"></path>
+                <path d="M694 536V624"></path>
+                <path d="M802 664H888"></path>
+                <path d="M1064 309H1090"></path>
+                <path d="M1151 352V612"></path>
+              </g>
+              <g class="arch-annotations">
+                <rect x="934" y="214" width="238" height="38" rx="19"></rect>
+                <text x="958" y="238" class="arch-badge">match - collapse + subscribe + DEFERRED</text>
+                <rect x="606" y="214" width="154" height="38" rx="19"></rect>
+                <text x="632" y="238" class="arch-badge">no match - hold in TAC</text>
+              </g>
+            </svg>
+          </div>
+          <figcaption>The architecture operates prospectively: equivalent tasks are intercepted and collapsed while work is still pending or live, rather than after results have already been computed and cached.</figcaption>
+        </figure>
+
+        <div class="component-grid reveal">
+          <article class="component-card"><h3>TIR</h3><p>Receives all task requests, assigns a unique request identifier, enriches origin metadata, timestamps arrivals, and classifies task type.</p></article>
+          <article class="component-card"><h3>SFM</h3><p>Builds a canonical semantic fingerprint that is intended to remain stable across stylistic and structural variations in the underlying task expression.</p></article>
+          <article class="component-card"><h3>SDE</h3><p>Performs a two-tier match sequence: exact structural hash lookup first, approximate nearest-neighbor search on embeddings second.</p></article>
+          <article class="component-card"><h3>TAC</h3><p>Implements Temporal Ghosting, a bounded delay window that allows clustered sister tasks to arrive and collapse before execution begins.</p></article>
+          <article class="component-card"><h3>CM</h3><p>Merges equivalent tasks into the existing shared execution unit, registers the subscriber, and returns a DEFERRED response for the duplicate request path.</p></article>
+          <article class="component-card"><h3>WIP-Cache</h3><p>Tracks active SEUs, status, subscribers, and final result payloads with durable replicated state for in-progress work.</p></article>
+          <article class="component-card"><h3>SEU-M</h3><p>Executes the shared execution unit once against the relevant backend resource and writes the full unmodified result into active state.</p></article>
+          <article class="component-card"><h3>RFM</h3><p>Fans the completed result out to every subscribed agent, preserving result correctness while deferring any agent-specific post-processing until after delivery.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-tinted" id="temporal">
+      <div class="container">
+        <div class="section-heading reveal">
+          <p class="eyebrow">Temporal Admission / Temporal Ghosting</p>
+          <h2>A short, deliberate wait window turns clustered duplicate arrivals into one live execution unit.</h2>
+          <p>The Temporal Admission Controller is not simple queue delay. It exploits the observed fan-out behavior of enterprise agent systems, where one trigger event often causes multiple semantically equivalent tasks to arrive almost at once.</p>
+        </div>
+        <div class="timeline-panel reveal">
+          <svg class="timeline-diagram" viewBox="0 0 1180 430" role="img" aria-label="Timeline showing Agent A, Agent B, and Agent C arriving within an admission window before one shared execution launches and fans out results">
+            <rect x="20" y="20" width="1140" height="390" rx="28" class="timeline-shell"></rect>
+            <line x1="150" y1="240" x2="1040" y2="240" class="timeline-axis"></line>
+            <text x="102" y="245" class="timeline-label">Time</text>
+            <rect x="280" y="106" width="314" height="268" rx="24" class="timeline-window"></rect>
+            <text x="314" y="140" class="timeline-kicker">Admission window</text>
+            <text x="314" y="172" class="timeline-copy">Temporal Ghosting captures clustered sister tasks</text>
+            <circle cx="320" cy="240" r="12" class="timeline-event timeline-trigger"></circle>
+            <text x="288" y="286" class="timeline-note">Trigger event</text>
+            <circle cx="390" cy="196" r="12" class="timeline-event"></circle>
+            <text x="358" y="178" class="timeline-note">Agent A arrives</text>
+            <circle cx="472" cy="240" r="12" class="timeline-event"></circle>
+            <text x="444" y="286" class="timeline-note">Agent B arrives</text>
+            <circle cx="554" cy="284" r="12" class="timeline-event"></circle>
+            <text x="524" y="328" class="timeline-note">Agent C arrives</text>
+            <path d="M594 240H732" class="timeline-axis timeline-dashed"></path>
+            <circle cx="758" cy="240" r="14" class="timeline-launch"></circle>
+            <text x="708" y="182" class="timeline-note">Window expires</text>
+            <text x="708" y="208" class="timeline-note">One backend execution launches</text>
+            <rect x="802" y="192" width="146" height="96" rx="22" class="timeline-exec"></rect>
+            <text x="830" y="230" class="timeline-kicker">SEU</text>
+            <text x="830" y="258" class="timeline-copy">Execute once</text>
+            <path d="M948 240H1014" class="timeline-axis"></path>
+            <circle cx="1030" cy="240" r="12" class="timeline-result"></circle>
+            <text x="978" y="178" class="timeline-note">Result fan-out</text>
+            <text x="978" y="204" class="timeline-note">All subscribers receive payload</text>
+          </svg>
+          <div class="timeline-notes">
+            <article class="mini-card"><h3>Before execution begins</h3><p>Unique work is held in a bounded pending state rather than dispatched immediately.</p></article>
+            <article class="mini-card"><h3>Duplicate arrivals subscribe live</h3><p>Equivalent tasks do not create new backend work; they attach to the same in-progress SEU.</p></article>
+            <article class="mini-card"><h3>DEFERRED is intentional</h3><p>Collapsed duplicates receive a deferred status rather than a distinct backend execution path.</p></article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="matching">
+      <div class="container">
+        <div class="section-heading reveal">
+          <p class="eyebrow">How Matching Works</p>
+          <h2>Two-tier matching combines fast exact detection with embedding-based near-duplicate recognition.</h2>
+        </div>
+        <div class="matching-grid reveal">
+          <article class="matching-card">
+            <span class="card-tag">Step 1</span>
+            <h3>Exact structural hash lookup</h3>
+            <p>The engine first checks whether the canonicalized task matches an in-flight or pending SEU exactly. This supports O(1)-style lookup behavior for exact normalized matches.</p>
+            <ul class="detail-list">
+              <li>Canonicalized SQL can produce a structural SHA-256 hash.</li>
+              <li>Exact normalized matches collapse immediately.</li>
+              <li>This path is optimized for high-confidence equivalence.</li>
+            </ul>
+          </article>
+          <article class="matching-card">
+            <span class="card-tag">Step 2</span>
+            <h3>Approximate nearest-neighbor search on embeddings</h3>
+            <p>If exact matching fails, the engine searches embedding space across in-flight and pending fingerprints, using a thresholded semantic similarity test to identify near-equivalent tasks.</p>
+            <ul class="detail-list">
+              <li>Natural-language requests map naturally to dense embeddings.</li>
+              <li>Structurally different but semantically equivalent tasks can still collapse.</li>
+              <li>Thresholds can be calibrated by task type and domain precision needs.</li>
+            </ul>
+          </article>
+        </div>
+        <div class="split-visual reveal">
+          <div class="split-column"><h3>Exact-first discipline</h3><p>For SQL-like workloads, WDC-Engine emphasizes canonicalization first, then exact hash matching when possible, before considering near-equivalence.</p></div>
+          <div class="split-column"><h3>Configurable per task class</h3><p>Admission windows and similarity thresholds can vary across SQL, natural language, API calls, document parsing, and spreadsheet generation workloads.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-tinted" id="modalities">
+      <div class="container">
+        <div class="section-heading reveal">
+          <p class="eyebrow">Multi-Modal Task Support</p>
+          <h2>The architecture is designed for enterprise task types beyond one request format.</h2>
+        </div>
+        <div class="modality-grid reveal">
+          <article class="modality-card"><h3>SQL query tasks</h3><p>Canonicalization can normalize case, aliasing, predicate order, comments, and parameter abstraction before matching.</p></article>
+          <article class="modality-card"><h3>Natural-language tasks</h3><p>Transformer-based sentence embeddings support near-equivalence across differently worded instructions with the same intent.</p></article>
+          <article class="modality-card"><h3>API calls</h3><p>Normalization can include method, endpoint path abstraction, significant headers, and JSON key ordering.</p></article>
+          <article class="modality-card"><h3>Document parsing requests</h3><p>Equivalent extraction or summarization work over the same enterprise documents can be collapsed before processing starts.</p></article>
+          <article class="modality-card"><h3>Spreadsheet generation</h3><p>Repeated report-generation requests over the same underlying data can share a single backend retrieval and generation path.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="examples">
+      <div class="container">
+        <div class="section-heading reveal">
+          <p class="eyebrow">Examples / Walkthroughs</p>
+          <h2>Illustrative flows show how semantic collapse works across both structured and natural-language tasks.</h2>
+        </div>
+        <div class="example-stack reveal">
+          <article class="example-card">
+            <div class="example-head">
+              <span class="card-tag">Example A</span>
+              <h3>SQL query deduplication</h3>
+            </div>
+            <p>Three agents independently formulate current-quarter West-region sales retrieval tasks inside the same trigger window. Their SQL differs in casing, aliases, formatting, and schema naming, but the system reduces them to the same logical intent.</p>
+            <div class="query-grid">
+              <pre><code>Agent A
+SELECT customer_id, SUM(amount) AS total
+FROM transactions
+WHERE DATE(created_at) &gt;= '2024-01-01'
+  AND region = 'West'
+GROUP BY customer_id;</code></pre>
+              <pre><code>Agent B
+select CUSTOMER_ID, sum(AMOUNT) total
+from TRANSACTIONS t
+where t.region = 'West'
+  and date(t.created_at) &gt;= '2024-01-01'
+group by CUSTOMER_ID;</code></pre>
+              <pre><code>Agent C
+SELECT c_id, SUM(amt)
+FROM txns
+WHERE txns.region = 'West'
+  AND DATE(txns.created_at) &gt;= '2024-01-01'
+GROUP BY c_id;</code></pre>
+            </div>
+            <div class="canonical-box">
+              <span class="mono-label">Canonicalized intent</span>
+              <pre><code>SELECT t1.customer_id, SUM(t1.amount) AS :COL_1
+FROM :TABLE_1 AS t1
+WHERE DATE(t1.created_at) &gt;= :DATE_1
+  AND t1.region = :STR_1
+GROUP BY t1.customer_id;</code></pre>
+            </div>
+            <p class="example-outcome">Outcome: Agent B collapses by exact normalized hash match. Agent C is treated as a near-duplicate by semantic similarity. One SEU launches, one database call executes, and the result is fanned out to all three agents.</p>
+          </article>
+
+          <article class="example-card">
+            <div class="example-head">
+              <span class="card-tag">Example B</span>
+              <h3>Natural-language task deduplication</h3>
+            </div>
+            <p>Three agents ask for open enterprise support cases from the last week using different phrasings. Instead of requiring exact textual equality, the engine uses embedding similarity to detect equivalent intent.</p>
+            <div class="ticket-list">
+              <article class="ticket-item"><strong>Agent A</strong><p>"Get me all open support tickets assigned to the enterprise tier from last week with their resolution status."</p></article>
+              <article class="ticket-item"><strong>Agent B</strong><p>"Retrieve enterprise support cases opened in the past 7 days that are still unresolved or in progress."</p></article>
+              <article class="ticket-item"><strong>Agent C</strong><p>"List unresolved enterprise customer tickets from the last week including current status."</p></article>
+            </div>
+            <p class="example-outcome">Outcome: No exact text match is required. Embedding similarity indicates near-equivalence, all three tasks collapse into one backend retrieval path, and each agent receives the same complete result payload for local post-processing.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-tinted" id="differentiation">
+      <div class="container">
+        <div class="section-heading reveal">
+          <p class="eyebrow">Differentiation / Prior Art Comparison</p>
+          <h2>WDC-Engine differs by operating prospectively on semantic equivalence at the middleware layer.</h2>
+        </div>
+        <div class="comparison-wrap reveal">
+          <table class="comparison-table">
+            <thead>
+              <tr><th>Approach</th><th>What it usually matches</th><th>Where it operates</th><th>How WDC-Engine differs</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Key-based caches</td><td>Exact key equality</td><td>Result reuse after key lookup</td><td>WDC-Engine targets semantic equivalence rather than exact predeclared cache keys.</td></tr>
+              <tr><td>Request coalescing / single-flight</td><td>Exact request key or URI</td><td>Concurrent duplicate suppression</td><td>WDC-Engine extends the idea by combining exact structural matching with embedding-based near-duplicate detection.</td></tr>
+              <tr><td>Task queues / workflow systems</td><td>Opaque jobs or queue items</td><td>Scheduling and execution orchestration</td><td>WDC-Engine interprets task intent and collapses equivalent work before queue execution begins.</td></tr>
+              <tr><td>Semantic cache</td><td>New request against completed prior results</td><td>Retrospective result reuse</td><td>WDC-Engine operates prospectively on live or pending work before backend execution occurs.</td></tr>
+              <tr><td>Multi-agent frameworks</td><td>Agent coordination logic</td><td>Agent layer</td><td>WDC-Engine is transparent middleware and does not require every agent to be rewritten to avoid duplicate tasks.</td></tr>
+              <tr class="highlight-row"><td>WDC-Engine</td><td>Exact plus near-equivalent semantic intent</td><td>Middleware between agents and execution resources</td><td>Combines semantic fingerprinting, temporal admission, shared live execution, and result fan-out in one execution-layer architecture.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="deployment">
+      <div class="container">
+        <div class="section-heading reveal">
+          <p class="eyebrow">Distributed Deployment</p>
+          <h2>Multi-node synchronization prevents duplicate shared execution units across zones.</h2>
+          <p>In distributed deployments, a node that receives a new candidate fingerprint can attempt to acquire a distributed lock on that fingerprint. If the lock is already held elsewhere, the arriving task is treated as a collapse candidate and subscribed to the existing SEU rather than creating a second one.</p>
+        </div>
+        <div class="distributed-layout reveal">
+          <div class="distributed-card">
+            <svg class="distributed-diagram" viewBox="0 0 1160 420" role="img" aria-label="Distributed deployment diagram showing multiple nodes using a distributed fingerprint lock to avoid duplicate shared execution unit creation">
+              <rect x="20" y="20" width="1120" height="380" rx="28" class="dist-shell"></rect>
+              <rect x="70" y="116" width="238" height="176" rx="24" class="dist-node"></rect>
+              <text x="102" y="156" class="dist-kicker">Zone A</text>
+              <text x="102" y="198" class="dist-title">Ingress node 1</text>
+              <text x="102" y="228" class="dist-copy">Receives equivalent task F</text>
+              <text x="102" y="258" class="dist-copy">Attempts fingerprint lock</text>
+              <rect x="458" y="74" width="244" height="270" rx="24" class="dist-node dist-lock"></rect>
+              <text x="494" y="116" class="dist-kicker">Shared coordination</text>
+              <text x="494" y="160" class="dist-title">Distributed lock</text>
+              <text x="494" y="192" class="dist-copy">Fingerprint F</text>
+              <text x="494" y="238" class="dist-copy">Winner registers pending SEU</text>
+              <text x="494" y="270" class="dist-copy">Others collapse into same unit</text>
+              <rect x="852" y="116" width="238" height="176" rx="24" class="dist-node"></rect>
+              <text x="884" y="156" class="dist-kicker">Zone B</text>
+              <text x="884" y="198" class="dist-title">Ingress node 2</text>
+              <text x="884" y="228" class="dist-copy">Receives equivalent task F</text>
+              <text x="884" y="258" class="dist-copy">Subscribes instead of duplicating</text>
+              <path d="M308 204H458" class="dist-link"></path>
+              <path d="M702 204H852" class="dist-link"></path>
+              <path d="M580 344V372" class="dist-link"></path>
+              <rect x="460" y="372" width="244" height="20" rx="10" class="dist-bar"></rect>
+            </svg>
+          </div>
+          <div class="distributed-notes">
+            <article class="mini-card"><h3>Lock on fingerprint</h3><p>A distributed lock ensures only one node establishes the pending shared execution unit for a candidate fingerprint.</p></article>
+            <article class="mini-card"><h3>Collapse across zones</h3><p>Equivalent tasks arriving in separate availability zones can still converge into the same logical unit of work.</p></article>
+            <article class="mini-card"><h3>Shared correctness</h3><p>Distributed coordination reduces duplicate SEU creation without changing the payload returned to the subscribing agents.</p></article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-tinted" id="metrics">
+      <div class="container">
+        <div class="section-heading reveal">
+          <p class="eyebrow">Metrics / Deduplication Multiplier</p>
+          <h2>One execution can satisfy many agent requests, and the savings are observable.</h2>
+        </div>
+        <div class="metrics-grid reveal">
+          <article class="metric-card metric-card-hero"><span class="metric-caption">Illustrative live SEU</span><strong class="metric-value">3.0x</strong><p class="metric-copy">Deduplication multiplier for one SQL SEU serving three agent requests with a single backend execution.</p></article>
+          <article class="metric-card"><span class="metric-caption">Executions saved</span><strong class="metric-value">2</strong><p class="metric-copy">Two redundant backend executions eliminated for that one cluster.</p></article>
+          <article class="metric-card"><span class="metric-caption">API pressure</span><strong class="metric-value">Lower</strong><p class="metric-copy">Shared external calls reduce rate-limit burn and upstream duplication pressure.</p></article>
+          <article class="metric-card"><span class="metric-caption">Database load</span><strong class="metric-value">Reduced</strong><p class="metric-copy">Fewer repeated scans and fewer concurrent equivalent queries reach the backend.</p></article>
+        </div>
+        <p class="section-note reveal">The patent describes exposing aggregate statistics such as mean and peak deduplication multiplier, executions saved, estimated compute cost savings, and API rate-limit units saved through a monitoring interface.</p>
+      </div>
+    </section>
+
+    <section class="section" id="impact">
+      <div class="container">
+        <div class="impact-panel reveal">
+          <div class="section-heading">
+            <p class="eyebrow">Why It Matters</p>
+            <h2>Transparent middleware-level optimization for enterprise multi-agent systems.</h2>
+          </div>
+          <div class="impact-grid">
+            <article class="impact-item"><h3>Lower compute waste</h3><p>Equivalent tasks stop consuming repeated backend cycles.</p></article>
+            <article class="impact-item"><h3>Lower cloud cost</h3><p>Repeated database reads, compute time, and external API usage are reduced.</p></article>
+            <article class="impact-item"><h3>Lower infrastructure pressure</h3><p>Databases, APIs, and document services handle fewer redundant requests.</p></article>
+            <article class="impact-item"><h3>Faster agent systems</h3><p>Agents avoid queuing behind duplicate peer work competing for the same resources.</p></article>
+            <article class="impact-item"><h3>Transparent integration</h3><p>The architecture is designed to work beneath existing agent frameworks rather than requiring every agent to self-coordinate perfectly.</p></article>
+            <article class="impact-item"><h3>Result correctness preservation</h3><p>Each agent still receives the full result payload it would have received from independent execution.</p></article>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>
+        <p class="footer-title">WDC-Engine - Systems and Methods for Semantic Deduplication and Shared Execution of Agent-Generated Enterprise Tasks</p>
+        <p class="footer-note">Public technical overview derived from the patent specification.</p>
+      </div>
+      <div class="footer-links">
+        <a href="#top">Back to top</a>
+        <a href="https://github.com/" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="./script.js"></script>
+</body>
+</html>
