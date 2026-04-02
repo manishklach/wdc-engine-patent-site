@@ -78,6 +78,7 @@
         <a href="#architecture">Architecture</a>
         <a href="#matching">Matching</a>
         <a href="#examples">Examples</a>
+        <a href="#prototype">Prototype</a>
         <a href="#differentiation">Differentiation</a>
         <a href="#deployment">Deployment</a>
       </nav>
@@ -602,6 +603,69 @@ GROUP BY t1.customer_id;</code></pre>
       </div>
     </section>
 
+    <section class="section" id="prototype">
+      <div class="container">
+        <div class="section-heading reveal">
+          <p class="eyebrow">Prototype</p>
+          <h2>A local MVP in the same repository demonstrates the core WDC-Engine execution flow.</h2>
+          <p>
+            The public microsite remains the primary technical narrative, while the `/prototype` directory contains a narrow FastAPI-based concept demo. It shows how multiple simulated agents submit tasks, how semantically equivalent work collapses into one Shared Execution Unit, and how one execution fans results out to every subscriber.
+          </p>
+        </div>
+
+        <div class="prototype-layout reveal">
+          <div class="prototype-copy">
+            <div class="prototype-feature-grid">
+              <article class="prototype-feature">
+                <h3>Semantic fingerprinting</h3>
+                <p>SQL canonicalization stubs, API canonicalization, and sentence-transformer embeddings for natural-language tasks.</p>
+              </article>
+              <article class="prototype-feature">
+                <h3>Temporal admission window</h3>
+                <p>A non-resetting timer holds the first unique task long enough for sister tasks to arrive and collapse.</p>
+              </article>
+              <article class="prototype-feature">
+                <h3>Shared execution unit</h3>
+                <p>Duplicate and near-duplicate requests attach to one SEU instead of triggering parallel backend work.</p>
+              </article>
+              <article class="prototype-feature">
+                <h3>Result fan-out</h3>
+                <p>The same result payload is distributed to all subscribed task records after one backend execution completes.</p>
+              </article>
+              <article class="prototype-feature">
+                <h3>Dedup multiplier</h3>
+                <p>Metrics track tasks received, SEUs executed, executions saved, and the deduplication multiplier.</p>
+              </article>
+            </div>
+
+            <div class="cta-row">
+              <a class="button button-primary" href="./prototype/">View Prototype Code</a>
+              <a class="button button-secondary" href="./prototype/#run-locally">Run Locally</a>
+              <a class="button button-secondary" href="./prototype/#demo-flow">See Demo Flow</a>
+            </div>
+          </div>
+
+          <div class="prototype-preview">
+            <figure class="prototype-media">
+              <img src="./assets/prototype/diagrams/prototype-preview.svg" alt="Prototype architecture preview showing agents, fingerprinting, temporal admission, shared execution, and fan-out.">
+              <figcaption>Prototype architecture preview: TIR, SFM, SDE, TAC, CM, WIP-Cache, SEU-M, and RFM mapped into a local MVP.</figcaption>
+            </figure>
+          </div>
+        </div>
+
+        <div class="prototype-gallery reveal">
+          <figure class="prototype-shot">
+            <img src="./assets/prototype/screenshots/dashboard-placeholder.svg" alt="Placeholder image for the prototype dashboard screenshot.">
+            <figcaption>Prototype dashboard placeholder for the simulator, metrics cards, and live task table.</figcaption>
+          </figure>
+          <figure class="prototype-shot">
+            <img src="./assets/prototype/screenshots/seu-flow-placeholder.svg" alt="Placeholder image for a shared execution unit flow screenshot.">
+            <figcaption>Prototype flow placeholder for the admission window, collapse path, and result fan-out sequence.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
     <section class="section" id="impact">
       <div class="container">
         <div class="impact-panel reveal">
@@ -630,7 +694,7 @@ GROUP BY t1.customer_id;</code></pre>
       </div>
       <div class="footer-links">
         <a href="#top">Back to top</a>
-        <a href="https://github.com/" target="_blank" rel="noopener">GitHub</a>
+        <a href="./prototype/">Prototype</a>
       </div>
     </div>
   </footer>

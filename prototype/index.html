@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WDC-Engine Prototype</title>
+  <meta name="description" content="Overview page for the WDC-Engine prototype MVP in this repository.">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <div class="site-bg" aria-hidden="true">
+    <div class="aurora aurora-one"></div>
+    <div class="aurora aurora-two"></div>
+    <div class="grid-wash"></div>
+  </div>
+  <main class="section">
+    <div class="container">
+      <div class="section-heading">
+        <p class="eyebrow">Prototype</p>
+        <h1>Local MVP for WDC-Engine</h1>
+        <p>This page accompanies the public patent microsite and points to the local prototype implementation included in the same repository.</p>
+      </div>
+
+      <div class="prototype-layout" style="margin-top:2rem;">
+        <div class="prototype-feature-grid">
+          <article class="prototype-feature">
+            <h3>What it demonstrates</h3>
+            <p>Simulated agents, semantic fingerprinting, temporal admission, shared execution units, result fan-out, and deduplication metrics.</p>
+          </article>
+          <article class="prototype-feature" id="run-locally">
+            <h3>Run locally</h3>
+            <p>Copy `.env.example` to `.env`, then run `docker compose up --build` inside `prototype/`.</p>
+          </article>
+          <article class="prototype-feature" id="demo-flow">
+            <h3>Demo flow</h3>
+            <p>Use the simulator UI to launch the SQL collapse, natural-language collapse, and unique-task scenarios.</p>
+          </article>
+          <article class="prototype-feature">
+            <h3>Documentation</h3>
+            <p>The implementation notes, module mapping, and limitations are documented in `prototype/README.md`.</p>
+          </article>
+        </div>
+
+        <div class="prototype-preview">
+          <figure class="prototype-media">
+            <img src="../assets/prototype/diagrams/prototype-preview.svg" alt="Prototype preview diagram.">
+            <figcaption>Prototype architecture preview for the local MVP included in this repository.</figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <div class="cta-row">
+        <a class="button button-primary" href="./frontend/">Open Prototype UI</a>
+        <a class="button button-secondary" href="./README.md">Open Prototype README</a>
+        <a class="button button-secondary" href="../">Back to Microsite</a>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

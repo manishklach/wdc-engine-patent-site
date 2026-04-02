@@ -20,6 +20,7 @@ This project turns the patent specification into a polished public-facing techni
 - `script.js`: Sticky-header, mobile navigation, and reveal behavior
 - `assets/favicon.svg`: Favicon/logo mark
 - `assets/og-card.svg`: Social preview graphic
+- `prototype/`: Local MVP demonstrating semantic deduplication, temporal admission, shared execution, and result fan-out
 
 ## Local preview
 
@@ -33,6 +34,27 @@ python -m http.server 8000
 Then open `http://localhost:8000`.
 
 Opening `index.html` directly also works for a quick review, but a local server is preferred.
+
+## Prototype
+
+The same repository also contains a working concept demo under `prototype/`.
+
+- Prototype documentation: `prototype/README.md`
+- Backend: FastAPI + Redis + sentence-transformers
+- Frontend: lightweight static simulator UI
+
+Quick start:
+
+```powershell
+cd C:\Users\ManishKL\Documents\Playground\wdc-engine-site\prototype
+Copy-Item .env.example .env
+docker compose up --build
+```
+
+Then open:
+
+- Prototype UI: `http://localhost:4173`
+- Prototype API: `http://localhost:8000/api`
 
 ## GitHub Pages deployment
 
@@ -78,6 +100,15 @@ wdc-engine-site/
   assets/
     favicon.svg
     og-card.svg
+    prototype/
+      diagrams/
+      screenshots/
+  prototype/
+    README.md
+    docker-compose.yml
+    .env.example
+    backend/
+    frontend/
 ```
 
 ## Notes

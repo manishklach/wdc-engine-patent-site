@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-label="Prototype SEU flow placeholder">
+  <rect width="1200" height="760" rx="34" fill="#f7faff"/>
+  <rect x="58" y="58" width="1084" height="644" rx="30" fill="#ffffff" stroke="#dce8fb"/>
+  <text x="98" y="120" fill="#0b51a8" font-family="IBM Plex Mono, monospace" font-size="24" font-weight="700">SCREENSHOT PLACEHOLDER</text>
+  <text x="98" y="174" fill="#122038" font-family="Manrope, Arial, sans-serif" font-size="42" font-weight="700">SEU collapse and fan-out view</text>
+  <text x="98" y="216" fill="#51617f" font-family="Manrope, Arial, sans-serif" font-size="22">Use this slot for a captured sequence showing PENDING, EXECUTING, and COMPLETED SEU states.</text>
+  <rect x="98" y="286" width="214" height="118" rx="22" fill="#edf5ff" stroke="#dce8fb"/>
+  <rect x="370" y="286" width="214" height="118" rx="22" fill="#dcebff" stroke="#dce8fb"/>
+  <rect x="642" y="286" width="214" height="118" rx="22" fill="#dcebff" stroke="#dce8fb"/>
+  <rect x="914" y="286" width="168" height="118" rx="22" fill="#0f6cda"/>
+  <path d="M312 344H370" stroke="#58a8ff" stroke-width="6" stroke-linecap="round"/>
+  <path d="M584 344H642" stroke="#58a8ff" stroke-width="6" stroke-linecap="round"/>
+  <path d="M856 344H914" stroke="#58a8ff" stroke-width="6" stroke-linecap="round"/>
+  <rect x="98" y="470" width="984" height="146" rx="26" fill="#edf5ff" stroke="#dce8fb"/>
+</svg>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WDC-Engine Prototype Simulator</title>
+  <meta name="description" content="Local simulator for the WDC-Engine prototype demonstrating semantic deduplication, temporal admission, shared execution units, and result fan-out.">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <p class="eyebrow">Prototype</p>
+      <h1>WDC-Engine Simulator</h1>
+    </div>
+    <div class="status-cluster">
+      <span class="status-pill">TIR</span>
+      <span class="status-pill">SFM</span>
+      <span class="status-pill">SDE</span>
+      <span class="status-pill">TAC</span>
+      <span class="status-pill">SEU-M</span>
+      <span class="status-pill">RFM</span>
+    </div>
+  </header>
+
+  <main class="page">
+    <section class="panel">
+      <div class="panel-header">
+        <div>
+          <p class="eyebrow">Simulator</p>
+          <h2>Launch patent-aligned demo flows</h2>
+        </div>
+        <label class="api-input">
+          <span>API base</span>
+          <input id="apiBase" type="text" value="http://localhost:8000/api">
+        </label>
+      </div>
+      <div class="scenario-grid">
+        <button class="scenario-card" data-scenario="sql-collapse">
+          <strong>SQL duplicate example</strong>
+          <span>Three differently formatted sales queries collapse into one backend execution.</span>
+        </button>
+        <button class="scenario-card" data-scenario="nl-collapse">
+          <strong>Natural-language duplicate example</strong>
+          <span>Three support-ticket retrieval tasks collapse by semantic similarity.</span>
+        </button>
+        <button class="scenario-card" data-scenario="unique-task">
+          <strong>Unique task example</strong>
+          <span>A distinct request remains unique and executes on its own.</span>
+        </button>
+      </div>
+      <form id="taskForm" class="manual-form">
+        <h3>Manual task submission</h3>
+        <div class="form-grid">
+          <label><span>Agent ID</span><input name="agent_id" value="Agent A" required></label>
+          <label>
+            <span>Task type</span>
+            <select name="task_type">
+              <option value="SQL_QUERY">SQL_QUERY</option>
+              <option value="NATURAL_LANGUAGE">NATURAL_LANGUAGE</option>
+              <option value="API_CALL">API_CALL</option>
+            </select>
+          </label>
+        </div>
+        <label><span>Payload</span><textarea name="payload" rows="5" required>SELECT customer_id, SUM(amount) AS total FROM transactions WHERE DATE(created_at) >= '2024-01-01' AND region = 'West' GROUP BY customer_id;</textarea></label>
+        <button class="primary-button" type="submit">Submit Task</button>
+      </form>
+    </section>
+
+    <section class="metrics-grid" id="metrics"></section>
+
+    <section class="layout-grid">
+      <section class="panel">
+        <div class="panel-header">
+          <div>
+            <p class="eyebrow">SEUs</p>
+            <h2>Shared execution unit lifecycle</h2>
+          </div>
+        </div>
+        <div id="seuList" class="seu-list"></div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-header">
+          <div>
+            <p class="eyebrow">Tasks</p>
+            <h2>Incoming tasks and collapse outcomes</h2>
+          </div>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Task</th>
+                <th>Agent</th>
+                <th>Type</th>
+                <th>Status</th>
+                <th>SEU</th>
+                <th>Match</th>
+              </tr>
+            </thead>
+            <tbody id="taskTable"></tbody>
+          </table>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <script src="./script.js"></script>
+</body>
+</html>

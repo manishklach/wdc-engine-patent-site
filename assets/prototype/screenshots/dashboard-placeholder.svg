@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-label="Prototype dashboard placeholder">
+  <rect width="1200" height="760" rx="34" fill="#08111f"/>
+  <rect x="56" y="56" width="1088" height="648" rx="30" fill="#0f1b31" stroke="#24344f"/>
+  <text x="96" y="118" fill="#58a8ff" font-family="IBM Plex Mono, monospace" font-size="24" font-weight="700">SCREENSHOT PLACEHOLDER</text>
+  <text x="96" y="172" fill="#edf3ff" font-family="Manrope, Arial, sans-serif" font-size="42" font-weight="700">Prototype dashboard</text>
+  <text x="96" y="214" fill="#9ab0d3" font-family="Manrope, Arial, sans-serif" font-size="22">Replace this asset with a real simulator screenshot when available.</text>
+  <rect x="96" y="270" width="292" height="132" rx="22" fill="#142642" stroke="#24344f"/>
+  <rect x="418" y="270" width="292" height="132" rx="22" fill="#142642" stroke="#24344f"/>
+  <rect x="740" y="270" width="292" height="132" rx="22" fill="#142642" stroke="#24344f"/>
+  <rect x="96" y="442" width="480" height="204" rx="24" fill="#142642" stroke="#24344f"/>
+  <rect x="606" y="442" width="426" height="204" rx="24" fill="#142642" stroke="#24344f"/>
+</svg>

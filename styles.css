@@ -512,6 +512,46 @@ pre {
 }
 .metric-copy { margin-top: 0.8rem; }
 
+.prototype-layout,
+.prototype-gallery {
+  display: grid;
+  gap: 1rem;
+}
+
+.prototype-layout {
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 0.9fr);
+  align-items: start;
+  margin-top: 2rem;
+}
+
+.prototype-feature-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.prototype-feature,
+.prototype-media,
+.prototype-shot {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  padding: 1.2rem;
+}
+
+.prototype-media figcaption,
+.prototype-shot figcaption {
+  margin-top: 0.9rem;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.prototype-gallery {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-top: 1rem;
+}
+
 .impact-panel { padding: 1.5rem; }
 .impact-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); margin-top: 1.4rem; }
 
@@ -578,13 +618,15 @@ pre {
 @media (max-width: 1120px) {
   .hero-grid,
   .distributed-layout,
-  .metrics-grid { grid-template-columns: 1fr; }
+  .metrics-grid,
+  .prototype-layout { grid-template-columns: 1fr; }
 
   .problem-grid,
   .component-grid,
   .modality-grid,
   .impact-grid,
   .idea-flow,
+  .prototype-gallery,
   .timeline-notes { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 
   .query-grid { grid-template-columns: 1fr; }
@@ -614,6 +656,8 @@ pre {
   .impact-grid,
   .idea-flow,
   .timeline-notes,
+  .prototype-feature-grid,
+  .prototype-gallery,
   .matching-grid,
   .split-visual { grid-template-columns: 1fr; }
   .section { padding: 4.4rem 0; }
